@@ -88,6 +88,38 @@ The `aws logs describe-export-tasks` command can be used to track the progress o
 ||+---------------------+----------------------------------------------------+||
 ```
 
+## S3 Bucket resource policy
+This policy example grants write access to the `logs.eu-west-3.amazonaws.com` service. See [Set permissions on an Amazon S3 bucket](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/S3ExportTasksConsole.html#S3PermissionsConsole) for additional information.
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "logs.eu-west-3.amazonaws.com"
+            },
+            "Action": "s3:GetBucketAcl",
+            "Resource": "arn:aws:s3:::s3-example-log-exports"
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "logs.eu-west-3.amazonaws.com"
+            },
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::s3-example-log-exports/*",
+            "Condition": {
+                "StringEquals": {
+                    "s3:x-amz-acl": "bucket-owner-full-control"
+                }
+            }
+        }
+    ]
+}
+```
+
 ## Contributing
 Thanks for your interest in contributing! There are many ways to contribute to this project. Get started [here](https://github.com/StevenJDH/.github/blob/main/docs/CONTRIBUTING.md).
 
