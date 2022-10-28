@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM amazon/aws-cli:2.8.5
+FROM amazon/aws-cli:2.8.6
 
 # Updating the base image to fix CVE issues,
 # and installing a few needed tools.
