@@ -1,6 +1,8 @@
 # AWS CloudWatch Log Exporter
 
+[![build](https://github.com/StevenJDH/aws-cwl-exporter/actions/workflows/generic-container-workflow.yml/badge.svg?branch=main)](https://github.com/StevenJDH/aws-cwl-exporter/actions/workflows/generic-container-workflow.yml)
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/StevenJDH/aws-cwl-exporter?include_prereleases)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/820cb5ee5c3a44a2bc63eecdbc55d08a)](https://www.codacy.com/gh/StevenJDH/aws-cwl-exporter/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=StevenJDH/aws-cwl-exporter&amp;utm_campaign=Badge_Grade)
 ![Maintenance](https://img.shields.io/maintenance/yes/2022)
 ![GitHub](https://img.shields.io/github/license/StevenJDH/aws-cwl-exporter)
 
@@ -33,7 +35,7 @@ AWS CloudWatch Log Exporter can be optionally deployed to a Kubernetes cluster u
 To run the application directly in a non-Kubernetes environment, use the approach below. Both `nerdctl` and `docker` CLIs are interchangeable here:
 
 ```bash
-nerdctl run --name aws-cwl-exporter \
+nerdctl run --rm --name aws-cwl-exporter \
     -e AWS_ACCESS_KEY_ID=xxxxxx \ # Not required when using roles.
     -e AWS_SECRET_ACCESS_KEY=xxxxxx \ # Not required when using roles.
     -e AWS_DEFAULT_REGION=eu-west-3  \
