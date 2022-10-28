@@ -28,17 +28,17 @@ fi
 echo -e "Creating [$MODE][$FROM-$TO] export task request..."
 
 RESPONSE=$(aws logs create-export-task --task-name log-group-$(date -u +"%s"000) \
-    --log-group-name $LOG_GROUP_NAME \
-    --from $FROM \
-    --to $TO \
-    --destination $S3_BUCKET_NAME \
-    --destination-prefix $EXPORT_PREFIX \
+    --log-group-name "$LOG_GROUP_NAME" \
+    --from "$FROM" \
+    --to "$TO" \
+    --destination "$S3_BUCKET_NAME" \
+    --destination-prefix "$EXPORT_PREFIX" \
     --output json)
 
 TASK_ID=$(jq -r '.taskId' <<< "$RESPONSE")
 
 if [[ "$TASK_ID" == null ]]; then
-    echo $RESPONSE
+    echo "$RESPONSE"
 else
     echo "
 ----------------------------------------------------
