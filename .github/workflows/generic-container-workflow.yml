@@ -32,10 +32,8 @@ jobs:
         fetch-depth: 0
 
     - name: Prepare Environment
-      id: prepare-env
       run: |
         NAME=$(basename -s .git "`git config --get remote.origin.url`")
-        echo "::set-output name=repo-name::$NAME"
         echo "REPO_NAME=$NAME" >> $GITHUB_ENV
 
     - name: Build Test Image
@@ -45,7 +43,7 @@ jobs:
         file: ./Dockerfile
         push: false
         load: true
-        tags: ${{ steps.prepare-env.outputs.repo-name }}:test
+        tags: ${{ env.REPO_NAME }}:test
 
     - name: Run Image Test
       run: |
