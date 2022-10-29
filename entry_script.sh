@@ -25,8 +25,8 @@ else
     TO=$(($(date -d 'yesterday 23:59:59' -u +%s) * 1000))
 fi
 
-FROM_TS=$(date -d @$(($FROM / 1000)) +%F'T'%T'Z' -u)
-TO_TS=$(date -d @$(($TO / 1000)) +%F'T'%T'Z' -u)
+FROM_TS=$(date -d @$((FROM / 1000)) +%F'T'%T'Z' -u)
+TO_TS=$(date -d @$((TO / 1000)) +%F'T'%T'Z' -u)
 
 echo -e "Creating [$MODE][$FROM_TS to $TO_TS] export task request..."
 
