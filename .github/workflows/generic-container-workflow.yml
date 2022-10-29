@@ -53,6 +53,7 @@ jobs:
         docker run --rm --entrypoint "/usr/local/bin/aws" $REPO_NAME:test --version
 
     - name: Check for New Base Image
+      if: "!startsWith(github.ref, 'refs/tags/')"
       id: aws-base-image
       run: |
         AWS_CWL_EXPORTER_VERSION=$(curl -L -s 'https://registry.hub.docker.com/v2/repositories/stevenjdh/aws-cwl-exporter/tags?page_size=5'|jq -r '.results[4]["name"]')
