@@ -17,17 +17,17 @@
 
 if [[ "$EXPORT_PERIOD" != 'daily' ]]; then
     MODE=HOURLY
-    FROM=$(date --date="$(date +%Y/%m/%d' '%H:00:00 -d '1 hour ago')" -u +"%s"000)
-    TO=$(date --date="$(date +%Y/%m/%d' '%H:59:59 -d '1 hour ago')" -u +"%s"000)
+    FROM=$((`date -d "$(date +%Y/%m/%d' '%H:00:00 -d '1 hour ago' -u)" -u +%s` * 1000))
+    TO=$((`date -d "$(date +%Y/%m/%d' '%H:59:59 -d '1 hour ago' -u)" -u +%s` * 1000))
 else
     MODE=DAILY
-    FROM=$(date --date="$(date +%Y/%m/%d -d 'yesterday') 00:00:00" -u +"%s"000)
-    TO=$(date --date="$(date +%Y/%m/%d -d 'yesterday') 23:59:59" -u +"%s"000)
+    FROM=$((`date -d 'yesterday 00:00:00' -u +%s` * 1000))
+    TO=$((`date -d 'yesterday 23:59:59' -u +%s` * 1000))
 fi
 
 echo -e "Creating [$MODE][$FROM-$TO] export task request..."
 
-RESPONSE=$(aws logs create-export-task --task-name log-group-$(date -u +"%s"000) \
+RESPONSE=$(aws logs create-export-task --task-name log-group-$((`date -u +%s` * 1000)) \
     --log-group-name "$LOG_GROUP_NAME" \
     --from "$FROM" \
     --to "$TO" \
