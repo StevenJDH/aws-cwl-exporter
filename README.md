@@ -49,7 +49,7 @@ nerdctl run --rm --name aws-cwl-exporter \
 If successful, the output will look similar to the following:
 
 ```text
-Creating [HOURLY][1666836000000-1666839599000] export task request...
+Creating [HOURLY][2022-10-27T02:00:00Z to 2022-10-27T02:59:59Z] export task request...
 
 ----------------------------------------------------
 |                 CreateExportTask                 |
