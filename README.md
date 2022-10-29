@@ -36,13 +36,13 @@ To run the application directly in a non-Kubernetes environment, use the approac
 
 ```bash
 nerdctl run --rm --name aws-cwl-exporter \
-    -e AWS_ACCESS_KEY_ID=xxxxxx \ # Not required when using roles.
-    -e AWS_SECRET_ACCESS_KEY=xxxxxx \ # Not required when using roles.
+    -e AWS_ACCESS_KEY_ID=xxxxxx \
+    -e AWS_SECRET_ACCESS_KEY=xxxxxx \
     -e AWS_DEFAULT_REGION=eu-west-3  \
     -e LOG_GROUP_NAME="/aws/lambda/hello-world-dev" \
     -e S3_BUCKET_NAME=s3-example-log-exports \
     -e EXPORT_PREFIX=export-task-output \
-    -e EXPORT_PERIOD=hourly \ # Not required unless set to 'daily'.
+    -e EXPORT_PERIOD=hourly \
     stevenjdh/aws-cwl-exporter:latest
 ```
 
@@ -89,6 +89,21 @@ The `aws logs describe-export-tasks` command can be used to track the progress o
 |||  message            |  Completed successfully                            |||
 ||+---------------------+----------------------------------------------------+||
 ```
+
+## Configuration
+The following environment variables are used to store the needed configuration. For access, the AWS Credential Provider Chain is used, which supports providing static credentials like below, or the recommended approach, enabling role based access via IRSA (IAM Roles for Service Accounts).
+
+|   Environment variable | Description                                                                                               |
+|-----------------------:|:----------------------------------------------------------------------------------------------------------|
+|        LOG_GROUP_NAME: | Required. The name of the log group source for exporting logs from.                                       |
+|        S3_BUCKET_NAME: | Required. The name of S3 bucket storing the exported log data. The bucket must be in the same AWS region. |
+|         EXPORT_PREFIX: | Required. The prefix used as the start of the key for every object exported.                              |
+|         EXPORT_PERIOD: | Optional. The `hourly` or `daily` period used for collecting logs. Not required unless set to `daily`.    |
+|     AWS_ACCESS_KEY_ID: | Optional. The AWS access key associated with an IAM user or role. Not required when using [IRSA].         |
+| AWS_SECRET_ACCESS_KEY: | Optional. The AWS secret key associated with the access key. Not required when using [IRSA].              |
+|    AWS_DEFAULT_REGION: | Optional. The AWS Region to use for requests. Must match log group and S3 bucket region. Not required when using [IRSA].|
+
+[IRSA]: https://github.com/StevenJDH/Terraform-Modules/tree/main/aws/irsa
 
 ## S3 Bucket resource policy
 This policy example grants write access to the `logs.eu-west-3.amazonaws.com` service. See [Set permissions on an Amazon S3 bucket](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/S3ExportTasksConsole.html#S3PermissionsConsole) for additional information.
