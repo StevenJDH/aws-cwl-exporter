@@ -62,7 +62,7 @@ jobs:
             echo "No new build for $AWS_IMAGE_VERSION needed."
             echo "changed=false" >> $GITHUB_OUTPUT
         else
-            echo "Build for $AWS_IMAGE_VERSION needed. Current version is $([[ $AWS_CWL_EXPORTER_VERSION != null ]] && echo $AWS_CWL_EXPORTER_VERSION || echo 'missing')."
+            echo "::notice::Build for $AWS_IMAGE_VERSION needed. Current version is $([[ $AWS_CWL_EXPORTER_VERSION != null ]] && echo $AWS_CWL_EXPORTER_VERSION || echo 'missing')."
             echo "changed=true" >> $GITHUB_OUTPUT
         fi
       continue-on-error: true
