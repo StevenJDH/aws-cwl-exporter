@@ -24,6 +24,9 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    # Map a step output to a job output.
+    outputs:
+      aws-base-image: ${{ steps.aws-base-image.outputs.changed }}
 
     steps:
     - uses: actions/checkout@v3
@@ -48,6 +51,21 @@ jobs:
     - name: Run Image Test
       run: |
         docker run --rm --entrypoint "/usr/local/bin/aws" $REPO_NAME:test --version
+
+    - name: Check for New Base Image
+      id: aws-base-image
+      run: |
+        AWS_CWL_EXPORTER_VERSION=$(curl -L -s 'https://registry.hub.docker.com/v2/repositories/stevenjdh/aws-cwl-exporter/tags?page_size=5'|jq -r '.results[4]["name"]')
+        AWS_IMAGE_VERSION=$(curl -L -s 'https://registry.hub.docker.com/v2/repositories/amazon/aws-cli/tags?page_size=1'|jq -r '.results[]["name"]')
+
+        if [[ "$AWS_CWL_EXPORTER_VERSION" == "$AWS_IMAGE_VERSION" ]]; then
+            echo "No new build for $AWS_IMAGE_VERSION needed."
+            echo "changed=false" >> $GITHUB_OUTPUT
+        else
+            echo "Build for $AWS_IMAGE_VERSION needed. Current version is $([[ $AWS_CWL_EXPORTER_VERSION != null ]] && echo $AWS_CWL_EXPORTER_VERSION || echo 'missing')."
+            echo "changed=true" >> $GITHUB_OUTPUT
+        fi
+      continue-on-error: true
 
     - name: Upload Artifact
       if: github.event_name != 'pull_request' && startsWith(github.ref, 'refs/tags/')
