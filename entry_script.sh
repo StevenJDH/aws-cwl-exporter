@@ -25,7 +25,10 @@ else
     TO=$((`date -d 'yesterday 23:59:59' -u +%s` * 1000))
 fi
 
-echo -e "Creating [$MODE][$FROM-$TO] export task request..."
+FROM_TS=$(date -d @`expr $FROM / 1000` +%F'T'%T'Z' -u)
+TO_TS=$(date -d @`expr $TO / 1000` +%F'T'%T'Z' -u)
+
+echo -e "Creating [$MODE][$FROM_TS to $TO_TS] export task request..."
 
 RESPONSE=$(aws logs create-export-task --task-name log-group-$((`date -u +%s` * 1000)) \
     --log-group-name "$LOG_GROUP_NAME" \
