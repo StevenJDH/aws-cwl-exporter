@@ -28,7 +28,7 @@ fi
 FROM_TS=$(date -d @$((FROM / 1000)) +%F'T'%T'Z' -u)
 TO_TS=$(date -d @$((TO / 1000)) +%F'T'%T'Z' -u)
 
-echo -e "Creating [$MODE][$FROM_TS to $TO_TS] export task request..."
+echo -e "\nCreating [$MODE][$FROM_TS to $TO_TS] export task request..."
 
 RESPONSE=$(aws logs create-export-task --task-name log-group-$(($(date -u +%s) * 1000)) \
     --log-group-name "$LOG_GROUP_NAME" \
@@ -40,7 +40,7 @@ RESPONSE=$(aws logs create-export-task --task-name log-group-$(($(date -u +%s) *
 
 TASK_ID=$(jq -r '.taskId' <<< "$RESPONSE")
 
-if [[ "$TASK_ID" == null ]]; then
+if [[ "$TASK_ID" == null || -z "$TASK_ID" ]]; then
     echo "$RESPONSE"
 else
     echo "
