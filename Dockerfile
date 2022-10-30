@@ -25,6 +25,6 @@ RUN yum update -y && \
     adduser --system aws -g aws
 
 USER aws:aws
-COPY ./entry_script.sh /
+COPY --chown=aws:aws --chmod=0544 ./entry_script.sh /
 
 ENTRYPOINT ["/bin/bash", "-c", "/entry_script.sh"]
