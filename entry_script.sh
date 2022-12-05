@@ -42,6 +42,7 @@ TASK_ID=$(jq -r '.taskId' <<< "$RESPONSE")
 
 if [[ "$TASK_ID" == null || -z "$TASK_ID" ]]; then
     echo "$RESPONSE"
+    exit 1
 else
     echo "
 ----------------------------------------------------
