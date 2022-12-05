@@ -22,9 +22,9 @@ AWS CloudWatch Log Exporter is a productivity tool that makes it easy to schedul
 ## Container registries
 AWS CloudWatch Log Exporter container images are currently hosted on the following platforms:
 
+* [Docker Hub](https://hub.docker.com/r/stevenjdh/aws-cwl-exporter)
 * [Amazon Elastic Container Registry (ECR)](https://gallery.ecr.aws/stevenjdh/aws-cwl-exporter)
 * [GitHub Container Registry](https://github.com/users/StevenJDH/packages/container/package/aws-cwl-exporter)
-* [Docker Hub](https://hub.docker.com/r/stevenjdh/aws-cwl-exporter)
 
 For production use cases, it is not recommended to pull an image with the `:latest` tag, or no tag since these are equivalent.
 
@@ -105,7 +105,27 @@ The following environment variables are used to store the needed configuration. 
 
 [IRSA]: https://github.com/StevenJDH/Terraform-Modules/tree/main/aws/irsa
 
-## S3 Bucket resource policy
+## Policies
+The following policies define the permissions that are needed for exporting CloudWatch logs and storing them in S3.
+
+### IAM Identity policy
+This policy example grants `logs:CreateExportTask` rights to the User or IRSA role (Recommended) associated with the application.
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "CWLGrantCreateExportTaskRights",
+            "Effect": "Allow",
+            "Action": "logs:CreateExportTask",
+            "Resource": "arn:aws:logs:eu-west-3:000000000000:*"
+        }
+    ]
+}
+```
+
+### S3 Bucket resource policy
 This policy example grants write access to the `logs.eu-west-3.amazonaws.com` service. See [Set permissions on an Amazon S3 bucket](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/S3ExportTasksConsole.html#S3PermissionsConsole) for additional information.
 
 ```json
