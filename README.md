@@ -90,6 +90,8 @@ The `aws logs describe-export-tasks` command can be used to track the progress o
 ||+---------------------+----------------------------------------------------+||
 ```
 
+> 📝**NOTE:** There is a limit of "one active (running or pending) export task at a time, per account. This quota can't be changed." See [CloudWatch Logs quotas](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/cloudwatch_limits_cwl.html) for more information.
+
 ## Configuration
 The following environment variables are used to store the needed configuration. For access, the AWS Credential Provider Chain is used, which supports providing static credentials like below, or the recommended approach, enabling role based access via IRSA (IAM Roles for Service Accounts).
 
