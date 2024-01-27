@@ -3,7 +3,7 @@
 [![build](https://github.com/StevenJDH/aws-cwl-exporter/actions/workflows/generic-container-workflow.yml/badge.svg?branch=main)](https://github.com/StevenJDH/aws-cwl-exporter/actions/workflows/generic-container-workflow.yml)
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/StevenJDH/aws-cwl-exporter?include_prereleases)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/820cb5ee5c3a44a2bc63eecdbc55d08a)](https://www.codacy.com/gh/StevenJDH/aws-cwl-exporter/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=StevenJDH/aws-cwl-exporter&amp;utm_campaign=Badge_Grade)
-![Maintenance](https://img.shields.io/maintenance/yes/2023)
+![Maintenance](https://img.shields.io/maintenance/yes/2024)
 ![GitHub](https://img.shields.io/github/license/StevenJDH/aws-cwl-exporter)
 
 AWS CloudWatch Log Exporter is a productivity tool that makes it easy to schedule automated log exports to an AWS S3 Bucket. Currently in AWS, exporting logs is a manual task that is done using tools like Log Insights and the AWS CLI. None of these options provide a way to export logs to an S3 Bucket where additional features like storage classes, lifecycle policies, and legal holds can be leveraged. As a result, those desiring some form of automation will create a custom solution using something like a Lambda function to achieve this, but there are many approaches available that are written in different programming languages, and not everyone is a programmer. AWS CloudWatch Log Exporter is built ready to go, and can be quickly deployed as a CronJob or Scheduled Task to any cluster, or as a container directly.
@@ -168,17 +168,10 @@ Many commonly asked questions are answered in the FAQ:
 
 ## Want to show your support?
 
-|Method       | Address                                                                                                    |
-|------------:|:-----------------------------------------------------------------------------------------------------------|
-|PayPal:      | [https://www.paypal.me/stevenjdh](https://www.paypal.me/stevenjdh "Steven's Paypal Page")                  |
-|Bitcoin:     | 3GyeQvN6imXEHVcdwrZwKHLZNGdnXeDfw2                                                                         |
-|Litecoin:    | MAJtR4ccdyUQtiiBpg9PwF2AZ6Xbk5ioLm                                                                         |
-|Ethereum:    | 0xa62b53c1d49f9C481e20E5675fbffDab2Fcda82E                                                                 |
-|Dash:        | Xw5bDL93fFNHe9FAGHV4hjoGfDpfwsqAAj                                                                         |
-|Zcash:       | t1a2Kr3jFv8WksgPBcMZFwiYM8Hn5QCMAs5                                                                        |
-|PIVX:        | DQq2qeny1TveZDcZFWwQVGdKchFGtzeieU                                                                         |
-|Ripple:      | rLHzPsX6oXkzU2qL12kHCH8G8cnZv1rBJh<br />Destination Tag: 2357564055                                        |
-|Monero:      | 4GdoN7NCTi8a5gZug7PrwZNKjvHFmKeV11L6pNJPgj5QNEHsN6eeX3D<br />&#8618;aAQFwZ1ufD4LYCZKArktt113W7QjWvQ7CWDXrwM8yCGgEdhV3Wt|
+|Method          | Address                                                                                   |
+|---------------:|:------------------------------------------------------------------------------------------|
+|PayPal:         | [https://www.paypal.me/stevenjdh](https://www.paypal.me/stevenjdh "Steven's Paypal Page") |
+|Cryptocurrency: | [Supported options](https://github.com/StevenJDH/StevenJDH/wiki/Donate-Cryptocurrency)    |
 
 
 // Steven Jenkins De Haro ("StevenJDH" on GitHub)
