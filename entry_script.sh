@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This file is part of aws-cwl-exporter <https://github.com/StevenJDH/aws-cwl-exporter>.
-# Copyright (C) 2022-2023 Steven Jenkins De Haro.
+# Copyright (C) 2022-2024 Steven Jenkins De Haro.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

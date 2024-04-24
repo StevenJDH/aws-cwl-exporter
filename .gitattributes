@@ -1,0 +1,6 @@
+###############################################################################
+# Set default behavior to automatically normalize line endings.
+###############################################################################
+* text=auto
+# Ensures bash script defaults to LF.
+entry_script.sh eol=lf
