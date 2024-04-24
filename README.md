@@ -2,8 +2,8 @@
 
 [![build](https://github.com/StevenJDH/aws-cwl-exporter/actions/workflows/generic-container-workflow.yml/badge.svg?branch=main)](https://github.com/StevenJDH/aws-cwl-exporter/actions/workflows/generic-container-workflow.yml)
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/StevenJDH/aws-cwl-exporter?include_prereleases)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/820cb5ee5c3a44a2bc63eecdbc55d08a)](https://www.codacy.com/gh/StevenJDH/aws-cwl-exporter/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=StevenJDH/aws-cwl-exporter&amp;utm_campaign=Badge_Grade)
-![Maintenance](https://img.shields.io/maintenance/yes/2024)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/820cb5ee5c3a44a2bc63eecdbc55d08a)](https://app.codacy.com/gh/StevenJDH/aws-cwl-exporter/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=StevenJDH/aws-cwl-exporter&amp;utm_campaign=Badge_Grade)
+![Maintenance](https://img.shields.io/badge/yes-4FCA21?label=maintained&style=flat)
 ![GitHub](https://img.shields.io/github/license/StevenJDH/aws-cwl-exporter)
 
 AWS CloudWatch Log Exporter is a productivity tool that makes it easy to schedule automated log exports to an AWS S3 Bucket. Currently in AWS, exporting logs is a manual task that is done using tools like Log Insights and the AWS CLI. None of these options provide a way to export logs to an S3 Bucket where additional features like storage classes, lifecycle policies, and legal holds can be leveraged. As a result, those desiring some form of automation will create a custom solution using something like a Lambda function to achieve this, but there are many approaches available that are written in different programming languages, and not everyone is a programmer. AWS CloudWatch Log Exporter is built ready to go, and can be quickly deployed as a CronJob or Scheduled Task to any cluster, or as a container directly.
