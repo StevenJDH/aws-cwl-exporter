@@ -1,5 +1,5 @@
 # This file is part of aws-cwl-exporter <https://github.com/StevenJDH/aws-cwl-exporter>.
-# Copyright (C) 2022-2023 Steven Jenkins De Haro.
+# Copyright (C) 2022-2024 Steven Jenkins De Haro.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM amazon/aws-cli:2.9.15
+FROM amazon/aws-cli:2.15.43
 
 # Updating the base image to fix CVE issues,
 # and installing a few needed tools.
